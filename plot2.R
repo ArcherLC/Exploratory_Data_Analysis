@@ -15,10 +15,10 @@ powerconsump <- subset(powerconsump, Date == "1/2/2007" | Date == "2/2/2007")
 powerconsump$Global_active_power <- as.numeric(as.character(powerconsump$Global_active_power))
 class(powerconsump$Global_active_power)
 
-
-## Create Plot 2: Plot of Date vs Global Active Power
+## Create new column (datetime) with the combination of Date and Time
 powerconsump$datetime <- paste(powerconsump$Date, powerconsump$Time)
 
+## Create Plot 2: Plot of Date vs Global Active Power
 with(powerconsump, plot(strptime(datetime, "%d/%m/%Y %H:%M:%S"), Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab =""))
 
 dev.copy(png, file = "plot2.png", width = 480, height = 480) ## Copy my plot2 to a PNG file
