@@ -24,9 +24,10 @@ class(powerconsump$Sub_metering_2)
 powerconsump$Sub_metering_3 <- as.numeric(as.character(powerconsump$Sub_metering_3))
 class(powerconsump$Sub_metering_3)
 
-## Create Plot 3: Plot of Date vs each Sub_metering
+## Create new column (datetime) with the combination of Date and Time columns
 powerconsump$datetime <- paste(powerconsump$Date, powerconsump$Time)
 
+## Create Plot 3: Plot of Date vs each Sub_metering
 with(powerconsump, plot(strptime(datetime, "%d/%m/%Y %H:%M:%S"), Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab =""))
 lines(strptime(powerconsump$datetime, "%d/%m/%Y %H:%M:%S"), powerconsump$Sub_metering_2, type = "l", col = "red")
 lines(strptime(powerconsump$datetime, "%d/%m/%Y %H:%M:%S"), powerconsump$Sub_metering_3, type = "l", col = "blue")
